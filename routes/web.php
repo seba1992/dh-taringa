@@ -45,6 +45,12 @@ Route::group(['middleware'=>'auth'], function() {
  * Route::get('nueva-cuenta', 'Auth/LoginController@showLoginForm')
  * Para ver las rutas que nos agrega Auth::routes() en consola debemos poner
  * php artisan route:list
+ *
+ * ------------------------------------------
+ *
+ * Para poder utilizar la recuperación de contraseña acordate que tenés
+ * que configurar las credenciales de tu cuenta de gmail (u otro servicio) 
+ * en el .env!
  */
 Auth::routes();
 
