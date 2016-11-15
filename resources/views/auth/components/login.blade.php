@@ -4,13 +4,13 @@ Separo esta vista de login.blade.php para poder reutilizar el formulario en la p
 
 --}}
 <div class="panel panel-default">
-    <div class="panel-heading">Login</div>
+    <div class="panel-heading">@lang('login.title')</div>
     <div class="panel-body">
         <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
             {{ csrf_field() }}
 
             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                <label for="email" class="col-md-4 control-label">@lang('login.email')</label>
 
                 <div class="col-md-6">
                     <input id="email" type="text" class="form-control" name="email" value="{{ old('email') }}" autofocus>
@@ -24,7 +24,7 @@ Separo esta vista de login.blade.php para poder reutilizar el formulario en la p
             </div>
 
             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                <label for="password" class="col-md-4 control-label">Password</label>
+                <label for="password" class="col-md-4 control-label">@lang('login.password')</label>
 
                 <div class="col-md-6">
                     <input id="password" type="password" class="form-control" name="password">
@@ -41,7 +41,7 @@ Separo esta vista de login.blade.php para poder reutilizar el formulario en la p
                 <div class="col-md-6 col-md-offset-4">
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="remember"> Remember Me
+                            <input type="checkbox" name="remember"> @lang('login.remember_me')
                         </label>
                     </div>
                 </div>
@@ -50,11 +50,11 @@ Separo esta vista de login.blade.php para poder reutilizar el formulario en la p
             <div class="form-group">
                 <div class="col-md-8 col-md-offset-4">
                     <button type="submit" class="btn btn-primary">
-                        Login
+                        @lang('login.submit')
                     </button>
 
                     <a class="btn btn-link" href="{{ url('/password/reset') }}">
-                        Forgot Your Password?
+                        @lang('login.forgot_your_password')
                     </a>
                 </div>
             </div>
