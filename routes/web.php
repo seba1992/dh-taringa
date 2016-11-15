@@ -17,7 +17,11 @@ use App\User;
 Route::get('/', function() {
   //En la vista principal muestro los 10 mejores posts a todos los usuarios!
   $posts = App\Post::take(10)->get();
-  return view('public.index')->with('posts', $posts);
+  $users = App\User::take(5)->orderBy('created_at', 'DESC')->get();
+
+  return view('public.index')
+  			->with('posts', $posts)
+  			->with('users', $users);
 });
 
 //Agrupo todas las rutas a las que no se puede acceder sin estar logueado para

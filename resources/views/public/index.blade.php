@@ -3,18 +3,18 @@
 
 <div class="container">
   <div class="row">
-      {{-- Muestro un listado de posts de todos los usuarios --}}
-      <div class="posts" style="text-align:left">
-        <h2>Top Posts!</h2>
+    <div class="col-xs-12 col-md-6">
+      @include('public.posts')
+    </div>
+      
+    <div class="col-md-6 hidden-sm">
+      @include('auth.components.login')
+    </div>
 
-        <ul>
-          @foreach($posts as $post)
-            <li>
-              <a href="#">{{$post->title}}</a>
-            </li>
-          @endforeach
-        </ul>
-      </div>
+    <div class="clearfix"></div>
+
+    <div class="col-xs-12 col-md-6">
+      @include('public.users')
     </div>
   </div>
 @endsection
