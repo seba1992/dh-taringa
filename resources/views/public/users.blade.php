@@ -1,6 +1,12 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    Ultimos usuarios!
+    {{-- 
+
+      Saco el texto a un archivo de idioma para que al cambiar el idioma se cambie solo y poder tener los mensajes concentrados en un solo lugar.
+
+      Ideealmente deberia hacer esto mismo con todos los mensajes de la página
+    --}}
+    @lang('public.last_users')
   </div>
   <div class="panel-body">
 

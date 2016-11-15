@@ -26,8 +26,8 @@
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
                 @if (Auth::guest())
-                    <li><a href="{{ url('/login') }}">Login</a></li>
-                    <li><a href="{{ url('/register') }}">Register</a></li>
+                    <li><a href="{{ url('/login') }}">@lang('login.title')</a></li>
+                    <li><a href="{{ url('/register') }}">@lang('register.title')</a></li>
                 @else
                         {{-- Agrego a la barra de navegación los items que tenia en mi proyecto inciialmente --}}
                         <li>
@@ -41,6 +41,14 @@
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 
+
+                        {{-- 
+
+                            ATENTO CON ESTO 
+
+                            La ruta de logout es por post, por lo que es necesario tener un formulario para el envio. Aca la artimaña que se usa para tener un link es tener un formulario oculto y al hacer click en el link "Logout" se envia el formulario
+
+                        --}}
                         <ul class="dropdown-menu" role="menu">
                             <li>
                                 <a href="{{ url('/logout') }}"
@@ -56,6 +64,13 @@
                         </ul>
                     </li>
                 @endif
+
+                <li>
+                    <a href="{{ route('information') }}" title="Info sobre el proyecto">
+                        <span class="glyphicon glyphicon-info-sign hidden-xs" title="Ver información del proyecto"></span> 
+                        <span class="visible-xs">Información</span> 
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
