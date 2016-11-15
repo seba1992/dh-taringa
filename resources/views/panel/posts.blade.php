@@ -26,7 +26,11 @@
 			
 
 		@else
-			<div class="alert alert-danger">Todavia no tenes ningún post </div>
+			<div class="alert alert-danger">
+				Todavia no tenes ningún post
+				<div><s>¿Ejecutaste php artisan migrate --seed?</s></div>
+			</div>
+
 			<a href="#" class="btn btn-default">Crealo ya!</a>
 		@endif
 	</div>
