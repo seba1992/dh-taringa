@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 use App\User;
 
 Route::get('/', 'PublicController@index');
-
+Route::get('/info', 'PublicController@showInfo')->name('information');
 //Agrupo todas las rutas a las que no se puede acceder sin estar logueado para
 //no tener que especificarles el middleware 
 Route::group(['middleware'=>'auth'], function() {
