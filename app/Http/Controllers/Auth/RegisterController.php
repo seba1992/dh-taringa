@@ -20,6 +20,20 @@ class RegisterController extends Controller
     |
     */
 
+    /**
+     * NOTA
+     * 
+     * La logica de estos controladores está escondida dentro de los traits
+     * que utilizan cada uno. En este caso la lógica para el registro está dentro
+     * del trait RegisterUsers, el cual no podemos modificar porque está en
+     * la carpeta vendor!!
+     *
+     * Los métodos más importantes que aporta ese trait son showRegistrationForm
+     * y register, los cuales son utilizados al usar Auth::routes() en el archivo
+     * de rutas 
+     *
+     * https://laravel.com/docs/5.3/authentication
+     */
     use RegistersUsers;
 
     /**

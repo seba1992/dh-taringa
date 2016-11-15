@@ -14,15 +14,7 @@
 use Illuminate\Http\Request;
 use App\User;
 
-Route::get('/', function() {
-  //En la vista principal muestro los 10 mejores posts a todos los usuarios!
-  $posts = App\Post::take(10)->get();
-  $users = App\User::take(5)->orderBy('created_at', 'DESC')->get();
-
-  return view('public.index')
-  			->with('posts', $posts)
-  			->with('users', $users);
-});
+Route::get('/', 'PublicController@index');
 
 //Agrupo todas las rutas a las que no se puede acceder sin estar logueado para
 //no tener que especificarles el middleware 
@@ -34,6 +26,26 @@ Route::group(['middleware'=>'auth'], function() {
 });
 
 
+/**
+ * Por defecto cuando creamos un nuevo proyecto de larave, aunque no ejecutemos
+ * php artisan make:auth tenemos en la app/Http/Controllers/Auth los controladores
+ * necesarios tanto para el registro, el login y la recuperación de contraseña.
+ *
+ * Para poder aprovechar toda esa lógica y no tener que codearla desde cero debemos
+ * definir las rutas que utilicen los métodos de dichos controllers.
+ *
+ * Bien podemos tener un conocimiento exhaustivo de esos controladores, o podemos
+ * simplemente poner Auth::routes() y genera todas las rutas apuntando a los métodos
+ * que corresponden de cada uno de los controladores automaticamente!!
+ *
+ * Solamente nos serviria hacerlo a mano en caso de que quisieramos de que
+ * quisieramos modificar los paths de dichas rutas. Por ejemplo si quisieramos 
+ * que al registro se entre desde /nueva-cuenta pondriamos lo siguiente
+ *
+ * Route::get('nueva-cuenta', 'Auth/LoginController@showLoginForm')
+ * Para ver las rutas que nos agrega Auth::routes() en consola debemos poner
+ * php artisan route:list
+ */
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');

@@ -7,11 +7,18 @@
       @include('public.posts')
     </div>
       
-    <div class="col-md-6 hidden-sm">
-      @include('auth.components.login')
-    </div>
+    {{-- 
+      En caso de que el usuario no esté logueado muestro el formulario de login 
 
-    <div class="clearfix"></div>
+      Para cheuqear que un usuario esté logueado utilizamos Auth::check()
+    --}}
+    @if(Auth::guest())
+      <div class="col-md-6 hidden-sm">
+        @include('auth.components.login')
+      </div>
+
+      <div class="clearfix"></div>
+    @endif
 
     <div class="col-xs-12 col-md-6">
       @include('public.users')
