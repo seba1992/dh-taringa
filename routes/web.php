@@ -17,24 +17,8 @@ use App\User;
 Route::get('/', function() {
   //En la vista principal muestro los 10 mejores posts a todos los usuarios!
   $posts = App\Post::take(10)->get();
-  return view('welcome')->with('posts', $posts);
+  return view('public.index')->with('posts', $posts);
 });
-/**
- * Rutas de login (notar que puedo tener dos rutas con la misma dirección
- */
-Route::get('login', 'AuthenticationController@showLoginForm')->name('login');
-Route::post('login', 'AuthenticationController@login');
-
-/**
- * Rutas de registro, notar que puedo tener 2 rutas con la misma dirección
- */
-Route::get('register', 'AuthenticationController@showRegisterForm');
-Route::post('register', 'AuthenticationController@register');
-
-/**
- * Ruta para desloguearse
- */
-Route::get('logout', 'AuthenticationController@logout')->name('logout');
 
 //Agrupo todas las rutas a las que no se puede acceder sin estar logueado para
 //no tener que especificarles el middleware 
@@ -46,4 +30,6 @@ Route::group(['middleware'=>'auth'], function() {
 });
 
 
+Auth::routes();
 
+Route::get('/home', 'HomeController@index');
