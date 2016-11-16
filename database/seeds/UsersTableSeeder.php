@@ -14,8 +14,11 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-	      if(User::count() > 0 )
-	      	throw new Exception("Ya hay usuarios en la tabla! Ejecutá php artisan migrate:refresh --seed si queres refrescar tu base de datos y seedearla nuevamente");
+        /**
+         * Ejercicio: Hacer este seeder usando Faker (mirar PostsTableSeeder)
+         */
+        if(User::count() > 0 )
+	      	throw new Exception("Ya hay usuarios en la tabla! Ejecutá php artisan migrate:refresh --seed si queres borrar todas tus tablas, volverlas a crear y seedearla nuevamente");
     	/*
     	 * Creo una coleccion de nombres en lugar de un vector para aprovechar el método random que me permite tomar un elemento aleatorio:
     	 *
@@ -40,7 +43,7 @@ class UsersTableSeeder extends Seeder
     	/**
     	 * Genero 100 usuarios falsos!
     	 */
-    	for($i=0; $i < 50; $i++) {
+    	for($i=0; $i < 30; $i++) {
     		//¿Por que guardo el nombre, el apellido y el dominio primero en variables en lugar de utilizarlos directamente?
     		$nombre = $nombres->random(1);
     		$apellido = $apellidos->random(1);
@@ -49,7 +52,7 @@ class UsersTableSeeder extends Seeder
     		//Genero un email aleatorio a partir de los datos anteriores.
     		//Para saber que hace el helper str_slug y ver otros helpers para el manejo de strings
     		//https://laravel.com/docs/5.3/helpers#method-str-slug
-    		$email = str_slug($nombre.$apellido).rand(1,1000)."@".$dominio; //Agrego un numero aleatorio despues del email para evitar que se repitan y me falle el seeder ya que el email es unique en la tabla users!
+    		$email = str_slug($nombre.$apellido).rand(1,10000)."@".$dominio; //Agrego un numero aleatorio despues del email para evitar que se repitan y me falle el seeder ya que el email es unique en la tabla users!
 
 	    	User::create([
 	          'name'     => $nombre,
