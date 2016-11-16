@@ -11,7 +11,7 @@
                 <ul>
                 	<li>
                 		<p>
-                			Para empezar configurate una BD y ejecutá <i>php artisan migrate --seed</i>, lo cual te va a crear usuarios y posts
+                			Para empezar configurate una BD <b>nueva</b> y ejecutá <i>php artisan migrate --seed</i>, lo cual te va a crear usuarios y posts
             			</p>
         			</li>
         			<li>
@@ -58,7 +58,7 @@
                             </blockquote>
                         </p>
                     </li>
-                    
+
                     <li>
                         <p>
                             Para poder utilizar los iconos de bootstrap copiate la carpeta public/fonts a tu proyecto

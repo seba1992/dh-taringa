@@ -26,7 +26,7 @@
         </div>
 
         <div>
-          <s>¿Ejecutaste php artisan migrate:refresh --seed?</s>
+          <s>¿Ejecutaste php artisan migrate --seed?</s>
         </div>
       @endif
   </div>
