@@ -18,7 +18,9 @@ class PublicController extends Controller
 	 */
     public function index() {
     	//En la vista principal muestro los 10 mejores posts a todos los usuarios!
-	  	$posts = Post::take(10)->get();
+    	
+    	//Obtiene los Top posts, mirate el método scopeTop en el modelo Post
+	  	$posts = Post::top()->get(); 
 	  	$users = User::take(5)->orderBy('created_at', 'DESC')->get();
 
 	  	return view('public.index')
