@@ -16,13 +16,50 @@ use App\User;
 
 Route::get('/', 'PublicController@index');
 Route::get('/info', 'PublicController@showInfo')->name('information');
-//Agrupo todas las rutas a las que no se puede acceder sin estar logueado para
-//no tener que especificarles el middleware 
-Route::group(['middleware'=>'auth'], function() {
-  //Notar que en estas rutas ya no uso el user_id como uno de los parametros ya que obtengo el usuario a traves de Auth::user(). 
-  Route::get('mis-posts', 'HomeController@displayPosts');
-  Route::get('mi-perfil', 'HomeController@displayProfile');
-  //Route::get('mi-config', 'HomeController@displayconfig');
+
+/**
+ * Agrupo todas las rutas a las que no se puede acceder sin estar logueado para
+ * no tener que especificarles el middleware 
+ *
+ * También le digo que el nombre de todos las rutas contenidas va a empezar
+ * con panel::, entonces para generar el link de las rutas lo haria de la
+ * siguiente forma
+ *
+ * route('panel::posts.index'), route('panel::profile.index')
+ *
+ * https://laravel.com/docs/5.1/routing#named-routes
+ *
+ */
+Route::group(['middleware'=>'auth', 'as' => 'panel::'], function() {
+  /**
+   * Notar que en estas rutas ya no uso el user_id como uno de los parametros
+   * ya que obtengo el usuario a traves de Auth::user().
+   *
+   * Siguiendo los principios rest las rutas deberian ser
+   * user/{id}/posts y user/{id}/profile, sin embargo no los estamos siguiendo
+   * intencionalmente ya que estas rutas tienen que ser lo más user-friendly
+   * posible. En un CMS (sistema de gestión de contenido) si está bueno y es
+   * importante que las sigamos al pie de la letra al igual que un API.
+   *
+   * Para crear un controlador dentro de una carpeta y que me setee el namespace
+   * del controlador correcta y automaticamente se hace de la siguiente forma:
+   *
+   * php artisan make:controller Panel/NombreControlador
+   *
+   * Notar que lo pone adentro de la carpeta Panel, y que el namespace
+   * de la clase generada lo prefija con Panel\...
+   */
+
+  /**
+   * Rutas para los posts
+   */
+  Route::get('posts', 'Panel\PostsController@index')->name('posts.index');
+
+  /**
+   * Rutas para el perfil del usuario
+   */
+  Route::get('perfil', 'Panel\ProfileController@edit')->name('profile.edit');
+  Route::post('perfil', 'Panel\ProfileController@update')->name('profile.update');
 });
 
 

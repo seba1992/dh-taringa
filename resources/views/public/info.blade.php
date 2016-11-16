@@ -41,6 +41,12 @@
 
                     <li>
                         <p>
+                            Podes subirte una imagen desde tu perfil, la misma se almacena en la carpeta storage/app/public
+                        </p>
+                    </li>
+
+                    <li>
+                        <p>
                             Para que te funcione el recuperador de contraseña acordate de configurar el .env con las credenciales de tu cuenta de gmail (o cualquier otro servicio)
 
                             <blockquote>
@@ -52,6 +58,7 @@
                             </blockquote>
                         </p>
                     </li>
+                    
                     <li>
                         <p>
                             Para poder utilizar los iconos de bootstrap copiate la carpeta public/fonts a tu proyecto

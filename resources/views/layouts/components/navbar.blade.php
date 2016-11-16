@@ -24,6 +24,12 @@
 
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="{{ route('information') }}" title="Info sobre el proyecto" >
+                        Ayuda!
+                    </a>
+                </li>
+
                 <!-- Authentication Links -->
                 @if (Auth::guest())
                     <li><a href="{{ url('/login') }}">@lang('login.title')</a></li>
@@ -31,10 +37,10 @@
                 @else
                         {{-- Agrego a la barra de navegación los items que tenia en mi proyecto inciialmente --}}
                         <li>
-                            <a href="{{ url('/mis-posts') }}">Mis posts</a>
+                            <a href="{{ route('panel::posts.index') }}">Mis posts</a>
                         </li>
                         <li>
-                            <a href="{{ url('/mi-perfil') }}">Perfil </a>
+                            <a href="{{ route('panel::profile.edit') }}">Mi perfil </a>
                         </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -63,14 +69,22 @@
                             </li>
                         </ul>
                     </li>
+
+                    {{-- 
+                    Muestra la imagen del perfil en caso de que la tenga.
+
+                    Una buena práctica sería tener la imagen redimensionada en un tamaño mas chico para mostrarla en la navbar, y mostrar el path de esa imagen en lugar de mostar la imagen original que es mucho mas pesada
+                    --}}
+                    <li style="line-height:50px" class="hidden-xs">
+                        @if(Auth::user()->avatar)
+                            <img class="img-responsive img-circle img-thumbnail" src="storage/{{Auth::user()->avatar}}" style="max-height:50px;">
+                        @else
+                            <img class="img-responsive img-circle img-thumbnail" src="img/default-avatar.png" title="No tenés cargada ninguna foto todavía!" style="max-height:45px;">
+                        @endif
+                    </li>
                 @endif
 
-                <li>
-                    <a href="{{ route('information') }}" title="Info sobre el proyecto">
-                        <span class="glyphicon glyphicon-info-sign hidden-xs" title="Ver información del proyecto"></span> 
-                        <span class="visible-xs">Información</span> 
-                    </a>
-                </li>
+                
             </ul>
         </div>
     </div>

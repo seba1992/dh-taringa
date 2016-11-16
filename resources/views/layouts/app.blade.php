@@ -60,7 +60,15 @@
         --}}
         @include('layouts.components.navbar')
 
-        @yield('content')
+        <div class="container">
+            @if(session('success_message'))
+                <div class="alert alert-success">
+                    {{ session('success_message')}}
+                </div>
+            @endif
+
+            @yield('content')
+        </div>
     </div>
 
     <!-- Scripts -->
