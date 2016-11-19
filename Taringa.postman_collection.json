@@ -1,0 +1,138 @@
+{
+	"id": "83228b56-1210-8a1b-4203-50debc907215",
+	"name": "Taringa",
+	"description": "Ejemplo de un mini-api para Digital House.\nSebastián Agustín Rinaldi.",
+	"order": [
+		"4c455d8c-9b8c-fd6b-ce06-1981f74b47ea",
+		"99a15cae-9164-8305-e5d7-39ba8a47d790",
+		"8878218e-d391-e694-be86-f0a20cc78839",
+		"d8ea2e42-4f57-2dab-e1c7-5f6f6d310d62",
+		"fc0ccadf-faf9-6cb4-c7bf-bb02996ed2af"
+	],
+	"folders": [],
+	"timestamp": 1479518329266,
+	"owner": "2197",
+	"public": false,
+	"requests": [
+		{
+			"id": "4c455d8c-9b8c-fd6b-ce06-1981f74b47ea",
+			"headers": "Accept: application/json\n",
+			"url": "http://localhost:8000/api/v1/posts",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1479519187165,
+			"name": "Muestra el listado de posts",
+			"description": "",
+			"collectionId": "83228b56-1210-8a1b-4203-50debc907215",
+			"responses": []
+		},
+		{
+			"id": "8878218e-d391-e694-be86-f0a20cc78839",
+			"headers": "Accept: application/json\n",
+			"url": "http://localhost:8000/api/v1/users/1/posts",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1479523734751,
+			"name": "Muestra los posts de un usuario",
+			"description": "",
+			"collectionId": "83228b56-1210-8a1b-4203-50debc907215",
+			"responses": []
+		},
+		{
+			"id": "99a15cae-9164-8305-e5d7-39ba8a47d790",
+			"headers": "",
+			"url": "http://localhost:8000/api/v1/posts/5",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1479519985675,
+			"name": "Muestra la información de un post",
+			"description": "",
+			"collectionId": "83228b56-1210-8a1b-4203-50debc907215",
+			"responses": []
+		},
+		{
+			"id": "d8ea2e42-4f57-2dab-e1c7-5f6f6d310d62",
+			"headers": "Accept: application/json\nContent-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:8000/api/v1/login",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "email",
+					"value": "bot@taringa.app",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "12345678",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"api_token\", jsonData.api_token);",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1479525172592,
+			"name": "Login",
+			"description": "Con esta ruta un usuario puede obtener un api_token para poder crear posts y realizar otras acciones que requieran de autenticación",
+			"collectionId": "83228b56-1210-8a1b-4203-50debc907215",
+			"responses": []
+		},
+		{
+			"id": "fc0ccadf-faf9-6cb4-c7bf-bb02996ed2af",
+			"headers": "Accept: application/json\n",
+			"url": "http://localhost:8000/api/v1/users/1/posts?api_token={{api_token}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "title",
+					"value": "Mi nueva receta!",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "content",
+					"value": "Hoy les traigo un nuevo post en el que les voy a mostrar como preparar uno de los platos mas suculen...",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1479523743495,
+			"name": "Creación de un post",
+			"description": "Guarda un nuevo post a un usuario especificado\nRequiere de autenticación",
+			"collectionId": "83228b56-1210-8a1b-4203-50debc907215",
+			"responses": []
+		}
+	]
+}
