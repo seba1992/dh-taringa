@@ -12,25 +12,25 @@
                 	<li>
                 		<p>
                 			Para empezar configurate una BD <b>nueva</b> y ejecutá <i>php artisan migrate --seed</i>, lo cual te va a crear usuarios y posts.<br/>
-                            El primer usuario es <b>bot@taringa.app</b> y la contraseña es <b>12345678</b>
+                            El primer usuario que te crea siempre es <b>bot@taringa.app</b> y la contraseña es <b>12345678</b>
             			</p>
         			</li>
         			<li>
                 		<p>
                 			Para seedear los users y posts se usa 
-                			<a href="https://github.com/fzaninotto/Faker">Faker</a>.
+                			<a href="https://github.com/fzaninotto/Faker" target="_blank">Faker</a>.
             			</p>
             		</li>
             		<li>
             			<p>
-            				El formulario de login puede verse tanto en la <a href="/">página principal</a> como en <a href="{{route('login')}}">/login</a> -- <i>Solo estando deslogueado</i>
+            				El formulario de login puede verse tanto en la <a href="/" target="_blank">página principal</a> como en <a href="{{route('login')}}" target="_blank">/login</a> -- <i>Solo estando deslogueado</i>
         				</p>
         			</li>
                 	<li>
                 		<p>
                             {{-- Sep, estan hardcodeadisimas las URLs de prueba de subdominios --}}
                 			El formulario de login puede verse en ingles o en español en base al subdominio:<br/>
-                			<a href="http://es.localhost:8000">http://es.localhost:8000</a>, <a href="http://en.localhost:8000">http://en.localhost:8000</a>
+                			<a href="http://es.localhost:8000" target="_blank">http://es.localhost:8000</a>, <a href="http://en.localhost:8000">http://en.localhost:8000</a>
             			</p>
         			</li>
         			<li>
@@ -47,7 +47,7 @@
 
                     <li>
                         <p>
-                            Para utilizar las rutas del api, como está versionada las rutas empiezan con api/v1/...<br/>(Ej:: GET <a href="http://localhost:8000/api/v1/posts/1">http://localhost:8000/api/v1/posts/1</a>)
+                            Para utilizar las rutas del api, como está versionada las rutas empiezan con api/v1/...<br/>(Ej:: GET <a href="http://localhost:8000/api/v1/posts/1" target="_blank">http://localhost:8000/api/v1/posts/1</a>)
                         </p>
                     </li>
 
@@ -74,7 +74,7 @@
 
                     <li>
                         <p>
-                            Para poder utilizar los iconos de bootstrap copiate la carpeta public/fonts a tu proyecto
+                            Para poder utilizar los iconos de bootstrap copiate la carpeta public/fonts a tu proyecto (Si queres saber más sobre como se integra bootstrap con laravel: <a href="https://laravel.com/docs/5.3/elixir" target="_blank">https://laravel.com/docs/5.3/elixir</a>)
                         </p>
                     </li>
         		</ul>
