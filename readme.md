@@ -26,3 +26,5 @@ Las rutas con las que te vas a encontar son:
 - `GET` api/v1/users/{id}/posts -- Muestra los posts de un usuarios específico
 - `POST` api/v1/login -- Nos permite loguearnos suministrando nuestro email y password
 - `POST` api/v1/users/{id}/posts?api_token=... -- Creación de un post, requiere de autenticación
+
+*Have fun!*
