@@ -1,27 +1,24 @@
-# Laravel PHP Framework
+# Ejemplo de autenticación y creación de un API en Laravel 5.3
+Este repositorio contiene una pequeña ejemplificación de como utilizar la autenticación en Laravel 5.3 y como crear un API para que nuestra aplicación sea consumible desde otros sistemas, por ejemplo, desde una aplicación mobile.
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+Desarrollo hecho para el turno tarde del curso Full Stack de Digital House (Noviembre 2016)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+## ¿Como utilizar este proyecto?
+- Clonarlos el proyecto: `git clone https://github.com/seba1992/dh_taringa.git`
+- Copiar el contenido del `.env.example` al .env `cp .env.example a .env`
+- Crear una nueva base de datos y setearla en el `.env`
+- En el directorio del proyecto ejecutar:
+    - `composer install`
+    - `php artisan key:generate`
+    - `php artisan migrate --seed`
+    - `php artisan serve`
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+## Rutas del API
+El proyecto contiene un api minimamente funcional, para ver como solucionar los diferentes problemas que se comentan en el código, se aconseja como introducción ver la siguiente serie: https://laracasts.com/series/incremental-api-development.
 
-## Official Documentation
-
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+Se incluye en el archivo `Taringa.postman_collection.json` una colección de Postman (instalátelo e importala) para que puedas jugar con el api(En principio probala con estas credenciales `email: bot@taringa.app`, `password:12345678`)
+- `GET` api/v1/posts -- Lista todos los posts con paginación
+- `GET` api/v1/posts/{id} -- Muestra la información de un post específico
+- `GET` api/v1/users/{id}/posts -- Muestra los posts de un usuarios específico
+- `POST` api/v1/login -- Nos permite loguearnos suministrando nuestro email y password
+- `POST` api/v1/users/{id}/posts?api_token=... -- Creación de un post, requiere de autenticación
