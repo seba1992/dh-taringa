@@ -14,62 +14,40 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        /**
-         * Ejercicio: Hacer este seeder usando Faker (mirar PostsTableSeeder)
-         */
         if(User::count() > 0 )
 	      	throw new Exception("Ya hay usuarios en la tabla! Ejecutá php artisan migrate:refresh --seed si queres borrar todas tus tablas, volverlas a crear y seedearla nuevamente");
-    	/*
-    	 * Creo una coleccion de nombres en lugar de un vector para aprovechar el método random que me permite tomar un elemento aleatorio:
-    	 *
-    	 * $nombres->random(1) //Obtiene un solo elemento
-    	 *
-    	 * No utilizo $nombres->shuffle()->first() porque segun la cantidad de nombres esto podria terminar siendo muy poco performante, mucho cuidado con shuffle!!
-    	 *
-    	 * Ver más métodos en: https://laravel.com/docs/5.3/collections
-    	 */
-    	$nombres = collect(['Juan', 'Analia', 'Teresa', 'Florencia', 'Hernando', 'Esteban']);
 
-    	/*
-    	 * Hago lo mismo con apellidos para poder obtener despues uno aleatorio
-    	 */
-    	$apellidos = collect(['Hernandez', 'Chavez', 'Pereyra', 'Gonzalez', 'Mazzoccone', 'Farias']);
+        $this->createDefaultUser();
+        $this->createRandomUsers();
+    }
 
-    	/*
-    	 * No es necesario que cree listas para cada una de las cosas que quiero utilizar, simplemente es para mostrar que si quiero que la data generada sea veridica puedo hacerlo con muy poco laburo! Si te fijas el 90% de este código son comentarios!
-    	 */
-    	$dominios = collect(['hotmail.com', 'yahoo.com.ar', 'gmail.com']);
+    /**
+     * Genero un usuario fijo que nos sirva para pruebas sin necesidad de andar
+     * revisando que usuarios aleatorios se crearon
+     */
+    protected function createDefaultUser() {
+        User::create([
+              'name'     => 'Bot',
+              'lastname' => 'De taringa',
+              'email'    => 'bot@taringa.app',
+              'password' => Hash::make('12345678')
+        ]); 
+    }
 
-    	/**
-    	 * Genero 100 usuarios falsos!
-    	 */
-    	for($i=0; $i < 30; $i++) {
-    		//¿Por que guardo el nombre, el apellido y el dominio primero en variables en lugar de utilizarlos directamente?
-    		$nombre = $nombres->random(1);
-    		$apellido = $apellidos->random(1);
-    		$dominio = $dominios->random(1);
+    /**
+     * Genero usuarios falsos con data aleatoria!
+     */
+    protected function createRandomUsers() {
 
-    		//Genero un email aleatorio a partir de los datos anteriores.
-    		//Para saber que hace el helper str_slug y ver otros helpers para el manejo de strings
-    		//https://laravel.com/docs/5.3/helpers#method-str-slug
-    		$email = str_slug($nombre.$apellido).rand(1,10000)."@".$dominio; //Agrego un numero aleatorio despues del email para evitar que se repitan y me falle el seeder ya que el email es unique en la tabla users!
+        $faker = Faker\Factory::create();
 
-	    	User::create([
-	          'name'     => $nombre,
-	          'lastname' => $apellido,
-	          'email'    => $email,
-	          'password' => Hash::make('12345678'), 
-	        ]);	
-
-	        /*
-	        	Tengo que guardar la contraseña con la encriptacion de laravel si o si,
-	         	primero y principal por un tema de seguridad, y por otra parte porque al intentar loguearme (con Auth::attempt) laravel no va a poder saber si la contraseña que puso el usuario es correcta o no. 
-
-	         	Usar el helper bcrypt en este caso es lo mismo que Hash::make, pero está bueno usar Hash::make porque me desligo de saber que sistema de encriptacion se está usando internamente
-
-	          	Para mas información:
-	          	https://laravel.com/docs/5.3/hashing
-	         */
-    	}
+        for($i=0; $i < 30; $i++) {
+            User::create([
+              'name'     => $faker->name,
+              'lastname' => $faker->lastName,
+              'email'    => $faker->email,
+              'password' => Hash::make('12345678'), //Vital guardar la contraseña encriptada o no nos vamos a poder autenticar!
+            ]); 
+        }
     }
 }
