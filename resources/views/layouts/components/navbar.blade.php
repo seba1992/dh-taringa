@@ -25,7 +25,7 @@
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="{{ route('information') }}" title="Info sobre el proyecto" >
+                    <a href="{{ route('help') }}" title="Info sobre el proyecto" >
                         Ayuda!
                     </a>
                 </li>

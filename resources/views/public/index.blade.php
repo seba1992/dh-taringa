@@ -4,16 +4,6 @@
 <div class="container">
   <div class="row">
     
-    {{--
-    <div class="col-xs-12">
-      @if(Auth::guest())
-        <div class="alert alert-info" role="alert">
-          Entrá <a href="{{route('information')}}">acá</a> para saber que cosas podes ver en este proyecto!
-        </div>
-      @endif
-    </div>
-    --}}
-
     <div class="col-xs-12 col-md-6">
       @include('public.posts')
     </div>

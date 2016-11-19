@@ -11,14 +11,14 @@
                 <ul>
                 	<li>
                 		<p>
-                			Para empezar configurate una BD <b>nueva</b> y ejecutá <i>php artisan migrate --seed</i>, lo cual te va a crear usuarios y posts
+                			Para empezar configurate una BD <b>nueva</b> y ejecutá <i>php artisan migrate --seed</i>, lo cual te va a crear usuarios y posts.<br/>
+                            El primer usuario es <b>bot@taringa.app</b> y la contraseña es <b>12345678</b>
             			</p>
         			</li>
         			<li>
                 		<p>
-                			Para seedear los posts se usa 
-                			<a href="https://github.com/fzaninotto/Faker">Faker</a> (Dónde? Cómo?). 
-                            Para seedear los usuarios se hace con artimañas (Cuáles?).
+                			Para seedear los users y posts se usa 
+                			<a href="https://github.com/fzaninotto/Faker">Faker</a>.
             			</p>
             		</li>
             		<li>
@@ -47,7 +47,20 @@
 
                     <li>
                         <p>
-                            Para que te funcione el recuperador de contraseña acordate de configurar el .env con las credenciales de tu cuenta de gmail (o cualquier otro servicio)
+                            Para utilizar las rutas del api, como está versionada las rutas empiezan con api/v1/...<br/>(Ej:: GET <a href="http://localhost:8000/api/v1/posts/1">http://localhost:8000/api/v1/posts/1</a>)
+                        </p>
+                    </li>
+
+                    <li>
+                        <p>
+                            Para poder jugar con el API instalate Postman, e importá el archivo que se llama <b>Taringa.postman_collection.json</b>.<br/>
+                            En especial para probar la autenticación!
+                        </p>
+                    </li>
+
+                    <li>
+                        <p>
+                            Para que te funcione el recuperador de contraseñas acordate de configurar el .env con las credenciales de tu cuenta de gmail (o cualquier otro servicio)
 
                             <blockquote>
                                 MAIL_HOST=smtp.gmail.com<br>

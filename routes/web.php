@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * Mini ejemplo de como utilizar la autenticación en Laravel 5.3 para
+ * el turno tarde del curso Full Stack de Digital House (Noviembre 2016)
+ *
+ * El sistema también incluye un mini api para que nuestro sistema pueda
+ * ser consumido externamente (por ejemplo por una aplicación mobile)
+ * 
+ * @author Sebastián A. Rinaldi <sebastian.agustin.rinaldi@gmail.com>
+ */
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,11 +21,8 @@
 |
 */
 
-use Illuminate\Http\Request;
-use App\User;
-
 Route::get('/', 'PublicController@index');
-Route::get('/info', 'PublicController@showInfo')->name('information');
+Route::get('/ayuda', 'PublicController@showHelp')->name('help');
 
 /**
  * Agrupo todas las rutas a las que no se puede acceder sin estar logueado para

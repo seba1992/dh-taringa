@@ -31,7 +31,7 @@ class PublicController extends Controller
     /**
      * Muestra una vista con información del proyecto
      */
-    public function showInfo() {
-    	return view('public.info');
+    public function showHelp() {
+    	return view('public.help');
     }
 }
