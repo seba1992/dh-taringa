@@ -22,9 +22,6 @@
 				<hr/>
 				<a href="#" class="btn btn-default">Crear post!</a>
 			</div>              
-
-			
-
 		@else
 			<div class="alert alert-danger">
 				Todavia no tenes ningún post :(
