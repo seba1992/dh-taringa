@@ -4,20 +4,23 @@ Este repositorio contiene una pequeña ejemplificación de como utilizar la aute
 Desarrollo hecho para el turno tarde del curso Full Stack de Digital House (Noviembre 2016)
 
 ## ¿Como utilizar este proyecto?
-- Clonarlos el proyecto: `git clone https://github.com/seba1992/dh_taringa.git`
-- Copiar el contenido del `.env.example` al .env `cp .env.example a .env`
+- Clonar el proyecto: `git clone https://github.com/seba1992/dh-taringa.git`
+- Copiar el contenido del `.env.example` al .env `cp .env.example .env`
 - Crear una nueva base de datos y setearla en el `.env`
-- En el directorio del proyecto ejecutar:
+- Ejecutar en el directorio del proyecto:
     - `composer install`
     - `php artisan key:generate`
     - `php artisan migrate --seed`
     - `php artisan storage:link`
     - `php artisan serve`
+- Entrá a http://localhost:8000/ayuda
 
 ## Rutas del API
-El proyecto contiene un api minimamente funcional, para ver como solucionar los diferentes problemas que se comentan en el código, se aconseja como introducción ver la siguiente serie: https://laracasts.com/series/incremental-api-development.
+El proyecto contiene un api minimamente funcional. Si estás interesado en saber como solucionar las diferentes problemáticas que se ven/comentan en el código, se aconseja, como introducción, ver la siguiente serie: https://laracasts.com/series/incremental-api-development.
 
-Se incluye en el archivo `Taringa.postman_collection.json` una colección de Postman (instalátelo e importala) para que puedas jugar con el api(En principio probala con estas credenciales `email: bot@taringa.app`, `password:12345678`)
+Se incluye en el root del proyecto, el archivo `Taringa.postman_collection.json`, el cual es una colección de Postman (instalátelo e importala) para que puedas jugar con el API (En principio probala con estas credenciales `email: bot@taringa.app`, `password:12345678`).
+
+Las rutas con las que te vas a encontar son:
 - `GET` api/v1/posts -- Lista todos los posts con paginación
 - `GET` api/v1/posts/{id} -- Muestra la información de un post específico
 - `GET` api/v1/users/{id}/posts -- Muestra los posts de un usuarios específico
