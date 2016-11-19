@@ -16,27 +16,29 @@ class PostsTableSeeder extends Seeder
     {
     	/** 
     	 * 
-    	 * Para evitarme el laburo que tuve que hacer en UserTableSeeder voy a utilizar una libreria
-    	 * de PHP (o sea que la podemos utilizar en cualquier proyecto con o sin larvel) que ya viene 
-    	 * importada en cualquier proyecto de laravel. 
+    	 * Para evitarme tener que hacer un tremendo laburo para generar data que tenga 
+         * algún sentido, utilizo una libreria de PHP (o sea que la podemos utilizar en
+         * cualquier proyecto con o sin larvel) que viene importada en cualquier proyecto
+         * de laravel (composer.json -> require-dev). 
     	 * 
-    	 * Dicha libreria se llama Faker y nos permite generar data falsa y coherente de una manera muy
-    	 * muy práctica! 
+    	 * Dicha libreria se llama Faker y nos permite generar data falsa y coherente
+         * de una manera muy sencilla! 
     	 * 
-    	 * Para saber todos los métodos que tiene si o si tenemos que revisarlo en la documentación
+    	 * Para saber todos los métodos que tiene si o si tenemos que revisarlo en la
+         * documentación
     	 * https://github.com/fzaninotto/Faker
     	 * 
-    	 * Para poder utilizarla en los seeders, como también dice en la documentación debemos primero 
-    	 * crear e inicializar el generador, lo cual hacemos simplemente con: 
+    	 * Para poder utilizarla en los seeders, como también dice en la documentación 
+         * debemos primero crear e inicializar el generador, lo cual hacemos simplemente con: 
     	 * 
     	 * $faker = Faker\Factory::create();
     	 * 
-    	 * Si estamos re cancheros con Seeders, faker, y las relationships de Eloquent, podemos intentar
-    	 * utilizar las Model Factories de Laravel, las cuales aunque ahora parezcan muy complicadas,
-    	 * con práctica y siguiendo los ejemplos de la documentación nos pueden realmente agilizar y
-    	 * potenciar la creacion de data falsa en nuestro proyecto, y también nos van a ser muy útiles
-    	 * si algún día empezamos a hacer tests automatizados de nuestras funcionalidades! (Te la dejo
-    	 * picando...)
+    	 * Si estamos re cancheros con Seeders, Faker, y las relationships de Eloquent, 
+         * podemos intentar utilizar las Model Factories de Laravel, las cuales, aunque ahora
+         * parezcan muy complicadas, con práctica y siguiendo los ejemplos de la documentación
+         * nos pueden realmente agilizar y potenciar la creacion de data falsa en nuestro 
+         * proyecto. También nos van a ser muy útiles si en algún momento empezamos a hacer
+         * tests automatizados de nuestro sistema! (Te la dejo picando...)
     	 *
     	 */
 
@@ -52,7 +54,7 @@ class PostsTableSeeder extends Seeder
 		 * Ojo si tengo muchos muchos usuarios probablemente voy a tener que pensar algo mas performante que esto!
 		 */
 
-		for($i=0; $i<70; $i++) {
+		for($i=0; $i < 70; $i++) {
 			$post = Post::create(
 		    	[
 		          'title'   => $faker->sentence(6), //Genera una oración de 6 palabras
@@ -63,11 +65,13 @@ class PostsTableSeeder extends Seeder
     	
     	/**
     	 * Unicamente en los seeders no es mala práctica guardar directamente la clave foranea
-    	 * user_id ya que generalmente uno crea las migraciones y los seeders antes de tener completamente definidas las relaciones en los modelos, justamente porque uno crea los seeders para poder ir probando la aplicación.
+    	 * user_id ya que generalmente uno crea las migraciones y los seeders antes de tener
+         * completamente definidas las relaciones en los modelos, justamente porque uno crea 
+         * los seeders para poder ir probando la aplicación.
     	 *
     	 * En cualquier otro sitio, tanto para acceder, modificar o guardar objetos relacionados
-    	 * a mi modelo, tengo que si o si definir las relaciones en mi modelo y utilizar los métodos
-    	 * que correspondan a cada tipo de relación. En este caso seria
+    	 * a mi modelo, tengo que si o si definir las relaciones en mi modelo y utilizar los
+         * métodos que correspondan a cada tipo de relación. En este caso seria
     	 *
     	 * $post = new Post(['title'=>'...', 'content'=>'...']);
     	 * $post->user()->associate($users->random(1));
@@ -75,7 +79,7 @@ class PostsTableSeeder extends Seeder
     	 *
     	 * !!!Recordá que no puedo utilizar Post::create(...) porque dicho método ejecuta
     	 * instantaneamente la consulta SQL, es decir: INSERT INTO users (title, content...)
-    	 * y como todavía no especifiqué el usuario, y  user_id es una clave foranea, 
+    	 * y como todavía no especifiqué el usuario, y el campo user_id es una clave foranea, 
     	 * MySQL no me lo va a permitir!
     	 */
     }
