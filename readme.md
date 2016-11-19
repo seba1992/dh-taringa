@@ -11,6 +11,7 @@ Desarrollo hecho para el turno tarde del curso Full Stack de Digital House (Novi
     - `composer install`
     - `php artisan key:generate`
     - `php artisan migrate --seed`
+    - `php artisan storage:link`
     - `php artisan serve`
 
 ## Rutas del API
